@@ -2,10 +2,12 @@
   %h1= "Current Tag is #{@tag}"
 - @spite.each do |spite|
   %div{:class=>"spite", :id=>spite[:id]}
-    #tags= spite[:tags].join(', ') #.map { |t| t.join(', ') }
     #note= spite[:contents]
     #duedate 
       %time= spite[:duedate]
+    #tags= spite[:tags].join(', ') 
+    #done
+      %button{:class=>'done',:object_id=>spite[:id], :onclick=>"mark_as_done(#{spite[:id]})"}Completed!
 
 %footer
   %a{:title => "Add a new todo item",:href=>"/new/"} Add a new item

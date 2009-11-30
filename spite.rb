@@ -40,10 +40,16 @@ post '/create' do
   redirect '/'
 end
 
+post '/done' do
+  id = params[:id]
+  @redis.set_add("done-spite", id)
+  redirect '/'
+end
+
 get '/' do
   @spite = load_items(
     begin
-      @redis.set_members('all-spite')
+      @redis.set_diff('all-spite', 'done-spite')
     rescue RedisError
       []
     end
