@@ -1,0 +1,9 @@
+- @spite.each do |spite|
+  .spite
+    #tags= spite[:tags].join(', ') #.map { |t| t.join(', ') }
+    #note= spite[:contents]
+    #duedate 
+      %time= spite[:duedate]
+
+%footer
+  %a{:title => "Add a new todo item",:href=>"/new/"} Add a new item
