@@ -1,3 +1,5 @@
+- if defined?(@tag)
+  %h1= "Current Tag is #{@tag}"
 - @spite.each do |spite|
   %div{:class=>"spite", :id=>spite[:id]}
     #tags= spite[:tags].join(', ') #.map { |t| t.join(', ') }

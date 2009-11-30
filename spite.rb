@@ -23,6 +23,13 @@ get '/new/' do
   haml :new
 end
 
+get '/tags/*' do
+  @tag = params[:splat].first
+  redirect '/' if @tag.empty?
+  @spite = load_items @redis.set_members("tags-#{@tag}")
+  haml :index
+end
+
 post '/create' do
   tags = params[:tags].gsub(/\s+/,'').split(',')
   spite_id = @redis.incr(:spite_counter)
