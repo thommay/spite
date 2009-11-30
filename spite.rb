@@ -26,7 +26,7 @@ end
 get '/tags/*' do
   @tag = params[:splat].first
   redirect '/' if @tag.empty?
-  @spite = load_items @redis.set_members("tags-#{@tag}")
+  @spite = load_items @redis.set_diff("tags-#{@tag}", 'done-spite')
   haml :index
 end
 
@@ -44,6 +44,12 @@ post '/done' do
   id = params[:id]
   @redis.set_add("done-spite", id)
   redirect '/'
+end
+
+get '/done' do
+  @spite = load_items @redis.set_members('done-spite')
+  @done = true
+  haml :index
 end
 
 get '/' do
