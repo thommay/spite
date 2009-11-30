@@ -13,7 +13,9 @@ before do
 end
 def load_items(ids)
   ids.map do |i|
-    Marshal.load(@redis["spite-#{i}"])
+    y = Marshal.load(@redis["spite-#{i}"] )
+    y[:id] = i
+    y
   end
 end
   
