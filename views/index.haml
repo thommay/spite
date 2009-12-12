@@ -7,7 +7,7 @@
       %time= spite[:duedate]
     #tags= spite[:tags].join(', ') 
     #done
-      %button{:class=>'done',:object_id=>spite[:id], :onclick=>"mark_as_done(#{spite[:id]})"}Completed!
+      %button{:class=>'done',:object_id=>spite[:id], :onclick=>"mark_as_done(#{spite[:id]})"}Done!
 
 %footer
   %a{:title => "Add a new todo item",:href=>"/new/"} Add a new item
