@@ -11,4 +11,13 @@
       %link{:rel=>'stylesheet', :type=>"text/css", :media=>"screen, projection", :href=>"/blueprint/ie.css"}
 
   %body
-    = yield
+    .container
+      %header{:class=>"span-24 last"}
+        %h1 Spite
+        %p= "Your list of spite on #{Time.now.strftime("%A %B %d, %Y")}"
+
+      != yield
+
+      %footer
+
+

@@ -7,7 +7,7 @@ require 'haml'
 # things are either done or not, they have a due date, tags and a description.
 #
 
-set :haml, :format => :html5
+set :haml, {:format => :html5, :escape_html => true}
 before do
   @redis = Redis.new
 end
