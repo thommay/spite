@@ -1,6 +1,9 @@
-%form{:action=>"/create",:method=>"post"}
-  %textarea{:name=>"contents"}
-  %input{:type=>"textarea",:name=>"tags"}
-  %input{:type=>"text",:name=>"duedate"}
-  %input{:type=>"submit"}
+%form{:action =>"/create",:method=>"post"}
+  %label            New Item
+  %textarea{:name =>"contents"}
+  %label            Tags
+  %input{:type =>"textarea",:name=>"tags"}
+  %label            Due Date
+  %input{:type =>"text",:name=>"duedate"}
+  %input{:type =>"submit"}
     

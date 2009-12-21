@@ -18,7 +18,17 @@ def load_items(ids)
     y
   end
 end
+
+helpers do
+  def partial(name, opts={})
+    haml name, opts.merge!(:layout=>false)
+  end
   
+  def tag_link(t)
+    partial("%a{:href=>'/tags/#{t}', :title=>'View posts tagged #{t}'} #{t}")
+  end
+end
+
 get '/new/' do
   haml :new
 end
