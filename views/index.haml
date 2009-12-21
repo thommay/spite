@@ -1,11 +1,12 @@
 - if defined?(@tag)
-  %h1= "Current Tag is #{@tag}"
+ %h1= "Current Tag is #{@tag}"
 - @spite.each do |spite|
-  %div{:class=>"spite", :id=>spite[:id]}
-    #note= spite[:contents]
-    #duedate 
-      %time= spite[:duedate]
-    #tags= spite[:tags].join(', ') 
-    #done
-      %button{:class=>'done',:object_id=>spite[:id], :onclick=>"mark_as_done(#{spite[:id]})"}Done!
+ %div{:class=>"spite", :id=>spite[:id]}
+  #note= spite[:contents]
+  #duedate 
+   %time= spite[:duedate]
+  - unless spite[:tags].empty?
+   #tags!= spite[:tags].collect {|t| tag_link(t)}.join(', ') 
+  #done
+   %button{:class=>'done',:object_id=>spite[:id], :onclick=>"mark_as_done(#{spite[:id]})"}Done!
 
