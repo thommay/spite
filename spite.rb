@@ -8,9 +8,15 @@ require 'haml'
 #
 
 set :haml, {:format => :html5, :escape_html => true}
+
+configure :production do
+  set :haml, {:ugly => true}
+end
+
 before do
   @redis = Redis.new
 end
+
 def load_items(ids)
   ids.map do |i|
     y = Marshal.load(@redis["spite-#{i}"] )
