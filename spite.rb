@@ -31,7 +31,7 @@ helpers do
   end
   
   def tag_link(t)
-    partial("%a{:href=>'/tags/#{t}', :title=>'View posts tagged #{t}'} #{t}")
+    partial("%a{:href=>'/tags/#{t}', :title=>'View posts tagged #{t}'}> #{t}")
   end
 end
 
