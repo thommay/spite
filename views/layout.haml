@@ -15,7 +15,7 @@
       %header{:class=>"span-24 last"}
         %h1 Spite
         %p= "Your list of spite on #{Time.now.strftime("%A %B %d, %Y")}"
-        .new= partial :_new
+        .new!= partial :_new
         /%a{:title => "Add a new todo item",:href=>"/new/"} Add a new item
 
       != yield
