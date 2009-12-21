@@ -35,7 +35,7 @@ helpers do
   end
 end
 
-get '/new/' do
+get '/new/?' do
   haml :new
 end
 
@@ -62,7 +62,7 @@ post '/done' do
   redirect '/'
 end
 
-get '/done' do
+get '/done/?' do
   @spite = load_items @redis.set_members('done-spite')
   @done = true
   haml :index
