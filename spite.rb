@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'redis'
 require 'haml'
+require 'parsedate'
 
 # spite is a very simple todo list
 # things are either done or not, they have a due date, tags and a description.
@@ -49,7 +50,8 @@ end
 post '/create' do
   tags = params[:tags].gsub(/\s+/,'').split(',')
   spite_id = @redis.incr(:spite_counter)
-  @redis["spite-#{spite_id}"] = Marshal.dump({ :contents => params[:contents], :duedate => params[:duedate], :tags =>tags})
+  d = Time.local(*ParseDate.parsedate(params[:duedate]))
+  @redis["spite-#{spite_id}"] = Marshal.dump({ :contents => params[:contents], :duedate => d.to_i, :tags =>tags})
   @redis.set_add("all-spite", spite_id)
   
   tags.each{ |t| @redis.set_add("tags-#{t}", spite_id) }

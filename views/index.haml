@@ -2,7 +2,7 @@
   %article{:class=>"spite span-24", :id=>spite[:id]}
     %div{:class=>"note span-16"}= spite[:contents]
     %div{:class=>"span-4 alt duedate"}
-      %time= spite[:duedate]
+      %time= Time.at(spite[:duedate]).strftime("%Y-%m-%d")
     - unless @done
       %div{:class=>"span-4 last alt done"}
         %button{:class=>'done',:object_id=>spite[:id], :onclick=>"mark_as_done(#{spite[:id]})"}Done!
