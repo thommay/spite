@@ -8,9 +8,15 @@ require 'haml'
 #
 
 set :haml, {:format => :html5, :escape_html => true}
+
+configure :production do
+  set :haml, {:ugly => true}
+end
+
 before do
   @redis = Redis.new
 end
+
 def load_items(ids)
   ids.map do |i|
     y = Marshal.load(@redis["spite-#{i}"] )
@@ -18,8 +24,18 @@ def load_items(ids)
     y
   end
 end
+
+helpers do
+  def partial(name, opts={})
+    haml name, opts.merge!(:layout=>false)
+  end
   
-get '/new/' do
+  def tag_link(t)
+    partial("%a{:href=>'/tags/#{t}', :title=>'View posts tagged #{t}'}> #{t}")
+  end
+end
+
+get '/new/?' do
   haml :new
 end
 
@@ -46,7 +62,7 @@ post '/done' do
   redirect '/'
 end
 
-get '/done' do
+get '/done/?' do
   @spite = load_items @redis.set_members('done-spite')
   @done = true
   haml :index
