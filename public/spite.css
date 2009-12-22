@@ -1,0 +1,5 @@
+div.note {
+        overflow:auto;
+        hyphens:auto;
+        hyphenate-after:;
+}

@@ -9,12 +9,23 @@
   %link{:rel=>'stylesheet', :type=>"text/css", :media=>"print", :href=>"/blueprint/print.css"}
   /[if lt IE 8]
    %link{:rel=>'stylesheet', :type=>"text/css", :media=>"screen, projection", :href=>"/blueprint/ie.css"}
+  %link{:rel=>'stylesheet', :type=>"text/css", :media=>"screen, projection", :href=>"/blueprint/plugins/fancy-type/screen.css"}
+  %link{:rel=>'stylesheet', :type=>"text/css", :media=>"screen, projection", :href=>"/spite.css"}
 
  %body
   .container
    %header{:class=>"span-24 last"}
-    %h1 Spite
+    %h1
+     %a{:href=>"/"}Spite
+    %hr/
     %p= "Your list of spite on #{Time.now.strftime("%A %B %d, %Y")}"
+   
+   %hr/
+
+   - if defined?(@tag)
+    %h3= "Current Tag is #{@tag}"
+    %hr/
+
     
    != yield
 
