@@ -1,13 +1,14 @@
 - if defined?(@tag)
-  %h1= "Current Tag is #{@tag}"
-- @spite.each do |spite|
-  %div{:class=>"spite", :id=>spite[:id]}
-    #note= spite[:contents]
-    #duedate 
-      %time= spite[:duedate]
-    #tags= spite[:tags].join(', ') 
-    #done
-      %button{:class=>'done',:object_id=>spite[:id], :onclick=>"mark_as_done(#{spite[:id]})"}Completed!
+  %h3= "Current Tag is #{@tag}"
 
-%footer
-  %a{:title => "Add a new todo item",:href=>"/new/"} Add a new item
+- @spite.each do |spite|
+  %article{:class=>"spite span-24", :id=>spite[:id]}
+    %div{:class=>"span-16", :id=>"note"}= spite[:contents]
+    %div{:class=>"span-4", :id=>"duedate"}
+      %time= spite[:duedate]
+    - unless @done
+      %div{:class=>"span-4 last", :id=>"done"}
+        %button{:object_id=>spite[:id], :onclick=>"mark_as_done(#{spite[:id]})"}Completed!
+    %br/
+    %div{:class=>"span-6 push-3", :id=>"tags"}= spite[:tags].join(', ') 
+
