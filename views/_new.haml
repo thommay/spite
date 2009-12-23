@@ -1,8 +1,8 @@
 %form{:action =>"/create",:method=>"post"}
   %label            New Item
-  %textarea{:name =>"contents"}
+  %textarea{:name =>"contents",:rows=>4}
   %label            Tags
-  %input{:type =>"textarea",:name=>"tags"}
+  %input{:type =>"text",:name=>"tags"}
   %label            Due Date
   %input{:type =>"text", :id=>"datepicker", :name=>"duedate"}
   %input{:type =>"submit"}

@@ -3,3 +3,32 @@ div.note {
         hyphens:auto;
         hyphenate-after:;
 }
+
+form {
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -khtml-border-radius: 3px;
+        border-radius: 3px;
+        padding: 10px;
+}
+
+form label, input[type=button], input[type=submit] {
+        float: left;
+        width: auto;
+        margin-top: 5px;
+        margin-right: 5px;
+}
+
+form input[type=text]{
+        float: left;
+        margin-right: 10px;
+        width: auto;
+}
+
+form textarea {
+        padding: 5px;
+        width: auto;
+        height: 65px;
+        float: left;
+        margin-right: 10px;
+}
