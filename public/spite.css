@@ -4,9 +4,8 @@
 
 div.note {
         overflow:auto;
-        hyphens:auto;
-        hyphenate-after:;
 }
+
 
 form {
         -moz-border-radius: 3px;
