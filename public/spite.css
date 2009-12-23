@@ -1,3 +1,7 @@
+.overdue {
+        background-color: #FF3333;
+}
+
 div.note {
         overflow:auto;
         hyphens:auto;

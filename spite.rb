@@ -44,6 +44,7 @@ get '/tags/*' do
   @tag = params[:splat].first
   redirect '/' if @tag.empty?
   @spite = load_items @redis.set_diff("tags-#{@tag}", 'done-spite')
+  @now = Time.new.to_i
   haml :index
 end
 
@@ -78,6 +79,7 @@ get '/' do
       []
     end
   )
+  @now = Time.new.to_i
   haml :index
 end
 
