@@ -1,0 +1,114 @@
+/* html5 reset stolen from http://html5doctor.com/html-5-reset-stylesheet/ */
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {line-height: 1.5;}
+
+article, aside, dialog, figure, footer, header, hgroup, nav, section { display:block; }
+
+nav ul {
+        list-style: none;
+}
+
+blockquote, q {
+        quotes:none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+        content:'';
+        content:none;
+}
+
+a {
+        margin:0;
+        padding:0;
+        border:0;
+        font-size:100%;
+        vertical-align:baseline;
+        background:transparent;
+}
+
+ins {
+        background-color:#ff9;
+        color:#000;
+        text-decoration:none;
+}
+
+mark {
+        background-color:#ff9;
+        color:#000;
+        font-style:italic;
+        font-weight:bold;
+}
+
+del {
+        text-decoration:line-through;
+}
+
+abbr[title], dfn[title] {
+        border-bottom:1px dotted #000;
+        cursor:help;
+}
+
+table {
+        border-collapse:collapse;
+        border-spacing:0;
+}
+
+hr { 
+        display:block;
+        height:1px;
+        border:0;
+        border-top:1px solid #cccccc;
+        margin:1em 0;
+        padding:0;
+}
+
+input,select {
+        vertical-align:middle;
+}
+
+/* fonts and display */
+html {font-size:100.01%;}
+body {font-size:75%; color:#222; background:#fff; font-family: Georgia, Times, serif;}
+h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111;}
+h1 {font-size:3em;line-height:1;margin-bottom:0.5em;text-transform: uppercase;}
+h2 {font-size:2em;margin-bottom:0.75em;}
+h3 {font-size:1.5em;line-height:1;margin-bottom:1em;}
+h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;}
+h5 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
+h6 {font-size:1em;font-weight:bold;}
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
+pre, code, tt {font:1em 'andale mono', 'lucida console', monospace;line-height:1.5;}
+
+
+/* seven row grid stolen from jason santa maria's entry on 24ways.org */
+.container {
+        width: 1100px;
+        float: left;
+        background: transparent;
+        padding-bottom: 20px;
+}
+
+/* S I Z E */
+.one {width: 100px;}
+.two {width: 210px;}
+.three {width: 320px;}
+.four {width: 430px;}
+.five {width: 540px;}
+.six {width: 650px;}
+.seven {width: 760px;}
+
+/* push articles off by one (this is a bit of an abuse) */
+article, article + hr, header, header + hr, footer {
+        margin: 0 120px 10px 230px;
+}
+
