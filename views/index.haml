@@ -1,4 +1,4 @@
-- @spite.each do |spite|
+- @spite.sort{|a,b| a[:duedate] <=> b[:duedate]}.each do |spite|
  - @over = (@now > spite[:duedate] ? " overdue" : "")
  %article{:class=>"spite span-24 #{@over}", :id=>spite[:id]}
   %div{:class=>"note span-16"}= spite[:contents]
