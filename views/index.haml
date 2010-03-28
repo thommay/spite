@@ -1,3 +1,5 @@
+- if flash.has?(:notice) 
+ %h3{:class=>"notice"}= flash[:notice]
 - @spite.sort{|a,b| a["duedate"] <=> b["duedate"]}.each do |spite|
  - @over = (Time.now.to_i > spite["duedate"] ? " overdue" : "")
  %article{:class=>"spite span-24 #{@over}", :id=>spite["id"]}

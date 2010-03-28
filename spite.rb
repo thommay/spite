@@ -4,12 +4,15 @@ require 'redis'
 require 'haml'
 require 'parsedate'
 require 'yajl'
+require 'rack/flash'
 
 # spite is a very simple todo list
 # things are either done or not, they have a due date, tags and a description.
 #
 
+set :sessions, true 
 set :haml, {:format => :html5, :escape_html => true}
+use Rack::Flash
 
 configure :production do
   set :haml, {:ugly => true}
@@ -54,12 +57,14 @@ post '/create' do
   @redis.set_add("all-spite", spite_id)
   
   tags.each{ |t| @redis.set_add("tags-#{t}", spite_id) }
+  flash[:notice] = "Added new piece of spite"
   redirect '/'
 end
 
 post '/done' do
   id = params[:id]
   @redis.set_add("done-spite", id)
+  flash[:notice] = "Yay, your list is less spiteful!"
   redirect '/'
 end
 
