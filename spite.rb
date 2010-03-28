@@ -3,6 +3,7 @@ require 'sinatra'
 require 'redis'
 require 'haml'
 require 'parsedate'
+require 'yajl'
 
 # spite is a very simple todo list
 # things are either done or not, they have a due date, tags and a description.
@@ -20,9 +21,7 @@ end
 
 def load_items(ids)
   ids.map do |i|
-    y = Marshal.load(@redis["spite-#{i}"] )
-    y[:id] = i
-    y
+    Yajl.load(@redis["spite-#{i}"] )
   end
 end
 
@@ -44,7 +43,6 @@ get '/tags/*' do
   @tag = params[:splat].first
   redirect '/' if @tag.empty?
   @spite = load_items @redis.set_diff("tags-#{@tag}", 'done-spite')
-  @now = Time.new.to_i
   haml :index
 end
 
@@ -52,7 +50,7 @@ post '/create' do
   tags = params[:tags].gsub(/\s+/,'').split(',')
   spite_id = @redis.incr(:spite_counter)
   d = Time.local(*ParseDate.parsedate(params[:duedate]))
-  @redis["spite-#{spite_id}"] = Marshal.dump({ :contents => params[:contents], :duedate => d.to_i, :tags =>tags})
+  @redis["spite-#{spite_id}"] = Yajl.dump({ :contents => params[:contents], :duedate => d.to_i, :tags =>tags, :id=>spite_id})
   @redis.set_add("all-spite", spite_id)
   
   tags.each{ |t| @redis.set_add("tags-#{t}", spite_id) }
@@ -79,7 +77,6 @@ get '/' do
       []
     end
   )
-  @now = Time.new.to_i
   haml :index
 end
 

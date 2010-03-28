@@ -1,14 +1,14 @@
-- @spite.sort{|a,b| a[:duedate] <=> b[:duedate]}.each do |spite|
- - @over = (@now > spite[:duedate] ? " overdue" : "")
- %article{:class=>"spite span-24 #{@over}", :id=>spite[:id]}
-  %div{:class=>"note span-16"}= spite[:contents]
+- @spite.sort{|a,b| a["duedate"] <=> b["duedate"]}.each do |spite|
+ - @over = (Time.now.to_i > spite["duedate"] ? " overdue" : "")
+ %article{:class=>"spite span-24 #{@over}", :id=>spite["id"]}
+  %div{:class=>"note span-16"}= spite["contents"]
   %div{:class=>"span-4 alt duedate"}
-   %time= Time.at(spite[:duedate]).strftime("%Y-%m-%d")
+   %time= Time.at(spite["duedate"]).strftime("%Y-%m-%d")
   - unless @done
    %div{:class=>"span-4 last alt done"}
-    %button{:class=>'done',:object_id=>spite[:id], :onclick=>"mark_as_done(#{spite[:id]})"}Done!
+    %button{:class=>'done',:object_id=>spite["id"], :onclick=>"mark_as_done(#{spite["id"]})"}Done!
   %br/
-  - unless spite[:tags].empty?
-   %div{:class=>"span-6 push-16 last tags"}!= spite[:tags].collect {|t| tag_link(t)}.join(', ')
+  - unless spite["tags"].empty?
+   %div{:class=>"span-6 push-16 last tags"}!= spite["tags"].collect {|t| tag_link(t)}.join(', ')
  %hr/
 
